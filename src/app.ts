@@ -1,6 +1,7 @@
 import express from "express";
-import postRoutes from "./routes/post.routes.js";
-import routes from "./routes/index.js"
+import airoute from "./modules/ai/routes/ai.routes.js"
+import authroute from "./modules/auth/routes/auth.routes.js"
+import postroute from "./modules/post/routes/post.routes.js"
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -13,7 +14,9 @@ app.use(cors(({
 
 app.use(cookieParser())
 app.use(express.json());
-app.use(routes);
+app.use("/auth",authroute);
+app.use("/posts",postroute);
+app.use("/ai",airoute);
 
 app.use(errorMiddleware);
 

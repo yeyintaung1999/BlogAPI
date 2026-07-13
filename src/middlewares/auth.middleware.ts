@@ -1,14 +1,15 @@
 import type { NextFunction, Request, Response } from "express";
 import jwt from 'jsonwebtoken';
+import { UnauthorizedError } from "../errors/UnauthorizedError";
 
-interface JwtPayload{
+interface JwtPayload {
     userId: string,
     email: string
 }
 
-declare global{
-    namespace Express{
-        interface Request{
+declare global {
+    namespace Express {
+        interface Request {
             userId?: string;
             email?: string;
         }
@@ -19,32 +20,28 @@ export function authMiddleware(
     req: Request,
     res: Response,
     next: NextFunction
-){
-    try{
-        const authHeader = req.headers.authorization;
-        if(!authHeader||!authHeader.startsWith('Bearer')){
-            return res.status(401).json({
-                message: "unauthourized",
-            })
-        }
-        const token = authHeader.split(" ")[1];
-        const secret = process.env.JWT_SECRET
+) {
 
-        if(token && secret){
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer')) {
+        return next(new UnauthorizedError('Unauthorized!'))
+    }
+    const token = authHeader.split(" ")[1];
+    const secret = process.env.JWT_SECRET!
+
+    try {
+        if (token && secret) {
             const payload = jwt.verify(
                 token,
                 secret
             ) as JwtPayload
-            
+
             req.userId = payload.userId;
             req.email = payload.email;
 
             next();
         }
-    }catch(error){
-        return res.status(401).json({
-            message: "Invalid or expired token",
-        });
+    } catch {
+        next(new UnauthorizedError('Invalid or expired token'));
     }
-
 }
