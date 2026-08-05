@@ -7,15 +7,8 @@ import { createUserSchema } from "../validators/auth.validator";
 
 const router = Router();
 
-router.post('/register',register)
-router.post(
-    '/login',
-    LoginLimiter,
-    validate(createUserSchema),
-    login)
-router.post(
-    "/refresh",
-    refreshToken
-);
+router.post('/register',validate(createUserSchema),register)
+router.post('/login',validate(createUserSchema),login);
+router.post("/refresh",refreshToken);
 
 export default router;

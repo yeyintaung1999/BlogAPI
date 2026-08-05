@@ -12,11 +12,14 @@ export const validate = (schema: ZodSchema) => {
     } catch (error) {
       if (error instanceof ZodError) {
         const formattedErrors: Record<string, string> = {};
+        console.log(error);
         
         error.issues.forEach((err) => {
+          console.log('issues=>', err)
           const path = err.path.slice(1).join('.'); 
           formattedErrors[path || 'error'] = err.message;
         });
+        console.log('formatted error =>',formattedErrors)
 
         return next(new ValidationError('Invalid request data', formattedErrors));
       }

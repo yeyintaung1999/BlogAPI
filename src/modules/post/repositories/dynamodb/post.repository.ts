@@ -5,7 +5,7 @@ import type { Post } from '../../types/post.types';
 import type { IPostRepository } from '../interfaces/IPostRepository';
 
 export class PostRepository 
-    extends DynamoDBRepository<Post> 
+    extends DynamoDBRepository<Post>
     implements IPostRepository
     {
     constructor(){

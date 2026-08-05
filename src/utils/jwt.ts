@@ -6,7 +6,6 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 const REFRESH_SECRET = process.env.REFRESH_SECRET!;
 
 export function generateAccessToken(payload: object){
-    console.log("jwtsecret =====>",JWT_SECRET);
     return jwt.sign(
         payload,
         JWT_SECRET,
