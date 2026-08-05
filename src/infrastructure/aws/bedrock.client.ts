@@ -1,5 +1,5 @@
 import { BedrockRuntimeClient, ConverseCommand, InvokeModelCommand } from "@aws-sdk/client-bedrock-runtime";
-import { BedrockError } from "../../errors/BedrockError";
+import { BedrockError } from "../../errors/BedrockError.js";
 
 class BedrockClient{
     private client: BedrockRuntimeClient;
