@@ -1,8 +1,8 @@
 import type { Request,Response } from "express";
-import { createUserSchema } from "../validators/auth.validator";
-import { AuthService } from "../services/auth.service";
+import { createUserSchema } from "../validators/auth.validator.js";
+import { AuthService } from "../services/auth.service.js";
 import { treeifyError } from "zod/v4/core";
-import { UserRepository } from "../../user/repositories/dynamodb/user.repository";
+import { UserRepository } from "../../user/repositories/dynamodb/user.repository.js";
 
 const userRepo = new UserRepository()
 const authservice = new AuthService(userRepo)

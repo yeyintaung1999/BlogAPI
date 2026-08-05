@@ -1,8 +1,8 @@
-import type { User } from '../../types/user.types';
+import type { User } from '../../types/user.types.js';
 import 'dotenv/config';
-import { DynamoDBRepository } from '../../../../infrastructure/database/ddb.repository';
-import { dynamoDb } from '../../../../infrastructure/aws/dynamodb.client';
-import type { IUserRepository } from '../interfaces/IUserRepository';
+import { DynamoDBRepository } from '../../../../infrastructure/database/ddb.repository.js';
+import { dynamoDb } from '../../../../infrastructure/aws/dynamodb.client.js';
+import type { IUserRepository } from '../interfaces/IUserRepository.js';
 
 
 export class UserRepository 

@@ -1,4 +1,4 @@
-import { bedrockClient } from "../../../infrastructure/aws/bedrock.client";
+import { bedrockClient } from "../../../infrastructure/aws/bedrock.client.js";
 
 export async function generate(title:string) {
     const content = await bedrockClient.generate(title);

@@ -1,12 +1,12 @@
 import { randomUUID } from "crypto";
 import bcrypt from "bcryptjs";
-import { generateAccessToken, generateRefreshToken } from "../../../utils/jwt";
-import { ConflictError } from "../../../errors/ConflictError";
-import { NotFoundError } from "../../../errors/NotFoundError";
-import { ValidationError } from "../../../errors/ValidationError";
-import { UnauthorizedError } from "../../../errors/UnauthorizedError";
-import { verifyRefreshToken } from "../../../utils/jwt";
-import type { IUserRepository } from "../../user/repositories/interfaces/IUserRepository";
+import { generateAccessToken, generateRefreshToken } from "../../../utils/jwt.js";
+import { ConflictError } from "../../../errors/ConflictError.js";
+import { NotFoundError } from "../../../errors/NotFoundError.js";
+import { ValidationError } from "../../../errors/ValidationError.js";
+import { UnauthorizedError } from "../../../errors/UnauthorizedError.js";
+import { verifyRefreshToken } from "../../../utils/jwt.js";
+import type { IUserRepository } from "../../user/repositories/interfaces/IUserRepository.js";
 
 export class AuthService {
     constructor(

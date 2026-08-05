@@ -1,7 +1,7 @@
 import type { Request,Response } from "express";
-import { GenerateContentSchema } from "../validators/ai.validator";
+import { GenerateContentSchema } from "../validators/ai.validator.js";
 import { treeifyError } from "zod/v4/core";
-import { generate } from "../services/ai.service";
+import { generate } from "../services/ai.service.js";
 export async function generateContent(req:Request, res: Response) {
     const result = GenerateContentSchema.safeParse(req.body);
     if(!result.success){

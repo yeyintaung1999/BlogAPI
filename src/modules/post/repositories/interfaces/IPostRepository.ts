@@ -1,6 +1,6 @@
 // modules/post/repositories/interfaces/IPostRepository.ts
 
-import type { Post } from "../../types/post.types";
+import type { Post } from "../../types/post.types.js";
 
 export interface IPostRepository {
   create(post: Post): Promise<Post>;
