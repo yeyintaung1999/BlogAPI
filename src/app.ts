@@ -3,14 +3,9 @@ import airoute from "./modules/ai/routes/ai.routes.js"
 import authroute from "./modules/auth/routes/auth.routes.js"
 import postroute from "./modules/post/routes/post.routes.js"
 import { errorMiddleware } from "./middlewares/error.middleware.js";
-import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 const app = express();
-app.use(cors(({
-    origin: 'http://localhost:5173',
-    credentials: true
-})))
 
 app.use(cookieParser())
 app.use(express.json());
