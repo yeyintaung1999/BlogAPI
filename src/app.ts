@@ -8,6 +8,12 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 
+
+app.use((req, _res, next) => {
+  console.log("REQUEST:", req.method, req.path);
+  next();
+});
+
 app.use(
   cors({
     origin: "http://13.57.33.2",
